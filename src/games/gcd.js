@@ -11,7 +11,7 @@ const getNod = (a, b) => {
     }
   }
 
-  return a + b;
+  return x + y;
 };
 const randomQuestion = (func) => {
   const a = func(0, 100);
