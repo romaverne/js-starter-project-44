@@ -1,27 +1,27 @@
-import { getUserName, responseCheck } from '../index.js';
+import { getUserName, checkAnswer } from '../index.js';
 
-const randomQuestion = (func) => {
-  let randomValue = func(0, 100);
-  const arrLength = func(5, 10);
-  const randomIndex = func(0, arrLength - 1);
-  const progressionValue = func(2, 10);
+const getRandomQuestion = (func) => {
+  let randomCount = func(0, 100);
+  const sequenceLength = func(5, 10);
+  const randomIndex = func(0, sequenceLength - 1);
+  const progressionCount = func(2, 10);
 
-  const progressionArr = [];
-  for (let i = 0; i < arrLength; i += 1) {
-    randomValue += progressionValue;
-    progressionArr.push(randomValue);
+  const progressions = [];
+  for (let i = 0; i < sequenceLength; i += 1) {
+    randomCount += progressionCount;
+    progressions.push(randomCount);
   }
 
-  const answer = String(progressionArr[randomIndex]);
-  progressionArr[randomIndex] = '..';
-  const question = progressionArr.join(' ');
+  const trueAnswer = String(progressions[randomIndex]);
+  progressions[randomIndex] = '..';
+  const question = progressions.join(' ');
 
-  return { question, trueAnswer: answer };
+  return { question, trueAnswer };
 };
 const progression = () => {
   const name = getUserName();
   console.log('What number is missing in the progression?');
 
-  responseCheck(name, randomQuestion);
+  checkAnswer(name, getRandomQuestion);
 };
 export default progression;

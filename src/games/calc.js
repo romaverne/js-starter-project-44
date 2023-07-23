@@ -1,17 +1,17 @@
-import { getUserName, responseCheck } from '../index.js';
+import { getUserName, checkAnswer } from '../index.js';
 
-const randomQuestion = (func) => {
+const getRandomQuestion = (func) => {
   const a = func(0, 100);
   const b = func(0, 100);
-  const answer = String(a + b);
+  const trueAnswer = String(a + b);
   const question = `${a} + ${b}`;
 
-  return { question, trueAnswer: answer };
+  return { question, trueAnswer };
 };
 const calc = () => {
   const name = getUserName();
   console.log('What is the result of the expression?');
-  responseCheck(name, randomQuestion);
+  checkAnswer(name, getRandomQuestion);
 };
 
 export default calc;

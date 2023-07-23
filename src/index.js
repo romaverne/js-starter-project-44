@@ -7,16 +7,16 @@ export const getUserName = () => {
   return name;
 };
 export const getRandomArbitrary = (min, max) => Math.floor(Math.random() * (max - min) + min);
-export const responseCheck = (name, randomQuestion, roundValue = 0, maxRoundValue = 3) => {
-  const question = randomQuestion(getRandomArbitrary);
+export const checkAnswer = (name, getRandomQuestion, roundCount = 0, maxRound = 3) => {
+  const question = getRandomQuestion(getRandomArbitrary);
   const answer = readlineSync.question(`Question: ${question.question}\nYour answer: `);
 
   if (answer === question.trueAnswer) {
     console.log('Correct!');
 
-    const sumRound = roundValue + 1;
-    if (sumRound < maxRoundValue) {
-      responseCheck(name, randomQuestion, sumRound);
+    const sumRounds = roundCount + 1;
+    if (sumRounds < maxRound) {
+      checkAnswer(name, getRandomQuestion, sumRounds);
     } else {
       console.log(`Congratulations, ${name}!`);
     }

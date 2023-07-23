@@ -1,6 +1,6 @@
-import { getUserName, responseCheck } from '../index.js';
+import { getUserName, checkAnswer } from '../index.js';
 
-const getNod = (a, b) => {
+const getGcd = (a, b) => {
   let x = a;
   let y = b;
   while (x !== 0 && y !== 0) {
@@ -13,19 +13,19 @@ const getNod = (a, b) => {
 
   return x + y;
 };
-const randomQuestion = (func) => {
+const getRandomQuestion = (func) => {
   const a = func(0, 100);
   const b = func(a, 100 + a);
-  const answer = String(getNod(a, b));
+  const trueAnswer = String(getGcd(a, b));
   const question = `${a} ${b}`;
 
-  return { question, trueAnswer: answer };
+  return { question, trueAnswer };
 };
 
 const gcd = () => {
   const name = getUserName();
   console.log('Find the greatest common divisor of given numbers.');
 
-  responseCheck(name, randomQuestion);
+  checkAnswer(name, getRandomQuestion);
 };
 export default gcd;
