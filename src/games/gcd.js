@@ -16,9 +16,10 @@ const getNod = (a, b) => {
 const randomQuestion = (func) => {
   const a = func(0, 100);
   const b = func(a, 100 + a);
-  const answer = getNod(a, b);
+  const answer = String(getNod(a, b));
+  const question = `${a} ${b}`;
 
-  return { question: `${a} ${b}`, trueAnswer: String(answer) };
+  return { question, trueAnswer: answer };
 };
 
 const gcd = () => {

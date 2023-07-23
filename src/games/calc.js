@@ -3,10 +3,10 @@ import { getUserName, responseCheck } from '../index.js';
 const randomQuestion = (func) => {
   const a = func(0, 100);
   const b = func(0, 100);
-  const sum = String(a + b);
-  const string = `${a} + ${b}`;
+  const answer = String(a + b);
+  const question = `${a} + ${b}`;
 
-  return { question: string, trueAnswer: sum };
+  return { question, trueAnswer: answer };
 };
 const calc = () => {
   const name = getUserName();
